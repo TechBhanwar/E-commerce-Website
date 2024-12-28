@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+
+  <link rel="stylesheet" href="dist/output.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css" rel="stylesheet" type="text/css" /> -->
+  <link href="node_modules/tw-elements/css/tw-elements.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="lib/animate/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+
+</head>
+
+<body>
+  <nav
+    class="bg-white w-full flex justify-between py-2 px-4 items-center lg:py-4 lg:px-5 text-white sticky top-0 z-50 shadow-md">
+    <div class="logo flex items-end space-x-5 order-2 lg:order-1">
+      <img src="images/logo.png" alt="" class="w-16 lg:w-[5rem]">
+      <div class="hidden text-black lg:block">
+        <ul class="flex space-x-5 items-center cursor-pointer font-semibold">
+          <li>Home</li>
+          <li>About</li>
+          <li>Services</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-black font-semibold order-1 items-start lg:order-2">
+      <img src="images/list.png" alt="" class="w-8 lg:hidden" id="menuIcon">
+    </div>
+
+    <div class="flex space-x-6 py-4 order-3 cursor-pointer ">
+      <img src="images/add-to-cart.png" alt="" class="w-7" id="cartIcon">
+      <img src="images/user.png" alt="" class="w-7" id="openModal">
+    </div>
+  </nav>
+
+
+  <!-- cart  -->
+  <!-- Cart Section Modal -->
+  <div id="cartSection" class="hidden fixed top-0 right-0 h-full w-96 bg-white shadow-lg z-50 overflow-y-auto">
+    <!-- Cart Content -->
+    <div class="p-6">
+      <!-- Cart Header -->
+      <div class="flex justify-between items-center border-b pb-4">
+        <h1 class="font-semibold text-2xl">Shopping Cart</h1>
+        <!-- Close Button -->
+        <button id="closeCart" class="text-gray-500 text-2xl">&times;</button>
+      </div>
+
+      <!-- Cart Items -->
+      <div class="mt-4">
+        <!-- Example Item -->
+        <div class="flex items-center border-b py-4">
+          <img src="https://i.ibb.co/6gzWwSq/Rectangle-20-1.png" alt="Product" class="w-16 h-16 object-cover" />
+          <div class="ml-4">
+            <p class="font-medium">Luxe Card Holder</p>
+            <p class="text-sm text-gray-600">Price: $300</p>
+          </div>
+        </div>
+
+        <!-- Another Example Item -->
+        <div class="flex items-center border-b py-4">
+          <img src="https://i.ibb.co/TTnzMTf/Rectangle-21.png" alt="Product" class="w-16 h-16 object-cover" />
+          <div class="ml-4">
+            <p class="font-medium">Black Leather Purse</p>
+            <p class="text-sm text-gray-600">Price: $200</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="mt-6">
+        <p class="flex justify-between text-lg font-semibold">
+          <span>Total:</span>
+          <span>$500</span>
+        </p>
+        <button class="bg-indigo-500 text-white w-full py-2 mt-4 hover:bg-indigo-600">
+          Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal  -->
+  <div id="userModal" class="hidden fixed top-[87px] right-0 h-[541px] w-[300px] bg-white shadow-lg z-40">
+    <p class="mt-4 pl-4 text-xl font-bold">Add new user</p>
+    <svg xmlns="http://www.w3.org/2000/svg" id="closeModal"
+      class="absolute right-0 top-0 m-3 h-6 w-6 cursor-pointer text-gray-400" fill="none" viewBox="0 0 24 24"
+      stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+    <div class="flex flex-col items-center px-8 py-4">
+      <label class="block w-full" for="name">
+        <p class="mb-1 text-sm text-gray-600">Name</p>
+        <input class="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1" type="text"
+          placeholder="Enter name" />
+      </label>
+      <label class="mt-4 block w-full" for="name">
+        <p class="mb-1 text-sm text-gray-600">Email Address</p>
+        <input class="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1" type="email"
+          placeholder="Enter email" />
+      </label>
+      <label class="mt-4 block w-full" for="name">
+        <p class="mb-1 text-sm text-gray-600">Assign Team</p>
+        <select class="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1">
+          <option value="Marketing">Marketing</option>
+          <option value="Designing">Designing</option>
+        </select>
+      </label>
+
+      <div class="mt-8 flex flex-col justify-center space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0">
+        <button class="whitespace-nowrap rounded-md bg-blue-500 px-4 py-3 font-medium text-white mb-3">
+          Add User
+        </button>
+        <button id="cancelModal" class="whitespace-nowrap rounded-md bg-gray-200 px-6 py-3 font-medium">
+          Cancel Operation
+        </button>
+      </div>
+      <p class="text-sm text-gray-600 mt-4">Password will be sent to their email</p>
+    </div>
+  </div>
+
+  <!-- slider  -->
+
+  <div id="carouselExampleCrossfade" class="relative h-[195px] lg:h-[540px] mb-5" data-twe-carousel-init
+    data-twe-ride="carousel">
+    <!-- Carousel indicators -->
+    <div class="absolute inset-x-0 bottom-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+      data-twe-carousel-indicators>
+      <button type="button" data-twe-target="#carouselExampleCrossfade" data-twe-slide-to="0" data-twe-carousel-active
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-twe-target="#carouselExampleCrossfade" data-twe-slide-to="1"
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 2"></button>
+      <button type="button" data-twe-target="#carouselExampleCrossfade" data-twe-slide-to="2"
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Carousel items -->
+    <div class="relative w-full overflow-hidden h-[195px] lg:h-[540px] after:clear-both after:block after:content-['']">
+      <!-- First item -->
+      <div
+        class="relative float-left -mr-[100%] w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+        data-twe-carousel-fade data-twe-carousel-item data-twe-carousel-active>
+        <img src="images/canva-gi6cpa1o-WU.jpg" class="block w-full object-cover" alt="Wild Landscape" />
+      </div>
+      <!-- Second item -->
+      <div
+        class="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+        data-twe-carousel-fade data-twe-carousel-item>
+        <img src="images/canva-pFgouCCsqB4.jpg" class="block w-full object-cover" alt="Camera" />
+      </div>
+      <!-- Third item -->
+      <div
+        class="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+        data-twe-carousel-fade data-twe-carousel-item>
+        <img src="images/canva-l-_aGV0mBmM.jpg" class="block w-full object-cover" alt="Exotic Fruits" />
+      </div>
+    </div>
+
+    <!-- Carousel controls -->
+    <button
+      class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+      type="button" data-twe-target="#carouselExampleCrossfade" data-twe-slide="prev">
+      <span class="inline-block h-8 w-8" style="background: white;
+      border-radius: 50%;
+      padding: 4px;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="h-6 w-6 text-black">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </span>
+      <span class="hidden">Previous</span>
+    </button>
+    <button
+      class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+      type="button" data-twe-target="#carouselExampleCrossfade" data-twe-slide="next">
+      <span class="inline-block h-8 w-8" style="background: white;
+      border-radius: 50%;
+      padding: 4px;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="h-6 w-6 text-black">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </span>
+      <span class="hidden">Next</span>
+    </button>
+  </div>
+  <!-- new arrival item  -->
+  <div class="flex flex-col space-x-3 justify-center text-center pt-6 mb-1 ">
+    <h1 class="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-black">New Arrivals </h1>
+    <p class="px-2">Our New arrival products Step Into the New – Explore Now!</p>
+  </div>
+  <div class="product flex lg:px-6 lg:space-x-3 mb-3 flex-col space-y-4 lg:flex-row">
+    <div
+      class="group border-gray-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-black shadow-md lg:mt-4 wow zoomIn"
+      data-wow-delay="0.1s">
+      <a class="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
+        <img class="peer absolute top-0 right-0 h-full w-full object-cover" src="images/product-4-1.jpg"
+          alt="product image" />
+        <img
+          class="peer peer-hover:right-0 absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0"
+          src="images/product-4-2.jpg" alt="product image" />
+        <svg
+          class="group-hover:animate-ping group-hover:opacity-30 peer-hover:opacity-0 pointer-events-none absolute inset-x-0 bottom-5 mx-auto text-3xl text-white transition-opacity"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+          preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
+          <path fill="currentColor"
+            d="M2 10a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v10a4 4 0 0 1-2.328 3.635a2.996 2.996 0 0 0-.55-.756l-8-8A3 3 0 0 0 14 17v7H6a4 4 0 0 1-4-4V10Zm14 19a1 1 0 0 0 1.8.6l2.7-3.6H25a1 1 0 0 0 .707-1.707l-8-8A1 1 0 0 0 16 17v12Z" />
+        </svg>
+        <!-- <span class="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">39% OFF</span> -->
+      </a>
+      <div class="mt-4 px-5 pb-5">
+        <a href="#">
+          <h5 class="text-xl tracking-tight text-white">Retro lable love kills t-shirt</h5>
+        </a>
+        <div class="mt-2 mb-5 flex items-center justify-between">
+          <p>
+            <span class="text-3xl font-bold text-white">$449</span>
+            <span class="text-sm text-white line-through">$699</span>
+          </p>
+        </div>
+        <a href="#"
+          class="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-white text-black px-5 py-2.5 text-center text-sm font-medium  focus:outline-none focus:ring-4 focus:ring-blue-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          Add to cart</a>
+      </div>
+    </div>
+    <div
+      class="group border-gray-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-black shadow-md wow zoomIn"
+      data-wow-delay="0.2s">
+      <a class="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
+        <img class="peer absolute top-0 right-0 h-full w-full object-cover" src="images/product-2-1.jpg"
+          alt="product image" />
+        <img
+          class="peer peer-hover:right-0 absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0"
+          src="images/product-10-2.jpg" alt="product image" />
+        <svg
+          class="group-hover:animate-ping group-hover:opacity-30 peer-hover:opacity-0 pointer-events-none absolute inset-x-0 bottom-5 mx-auto text-3xl text-white transition-opacity"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+          preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
+          <path fill="currentColor"
+            d="M2 10a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v10a4 4 0 0 1-2.328 3.635a2.996 2.996 0 0 0-.55-.756l-8-8A3 3 0 0 0 14 17v7H6a4 4 0 0 1-4-4V10Zm14 19a1 1 0 0 0 1.8.6l2.7-3.6H25a1 1 0 0 0 .707-1.707l-8-8A1 1 0 0 0 16 17v12Z" />
+        </svg>
+        <!-- <span class="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">39% OFF</span> -->
+      </a>
+      <div class="mt-4 px-5 pb-5">
+        <a href="#">
+          <h5 class="text-xl tracking-tight text-white">Relax fitt print tee</h5>
+        </a>
+        <div class="mt-2 mb-5 flex items-center justify-between">
+          <p>
+            <span class="text-3xl font-bold text-white">$449</span>
+            <span class="text-sm text-white line-through">$699</span>
+          </p>
+        </div>
+        <a href="#"
+          class="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-white text-black  px-5 py-2.5 text-center text-sm font-medium  focus:outline-none focus:ring-4 focus:ring-blue-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          Add to cart</a>
+      </div>
+    </div>
+    <div
+      class="group border-gray-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-black shadow-md wow zoomIn"
+      data-wow-delay="0.3s">
+      <a class="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
+        <img class="peer absolute top-0 right-0 h-full w-full object-cover" src="images/product-18-1.jpg"
+          alt="product image" />
+        <img
+          class="peer peer-hover:right-0 absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0"
+          src="images/product-18-2.jpg" alt="product image" />
+        <svg
+          class="group-hover:animate-ping group-hover:opacity-30 peer-hover:opacity-0 pointer-events-none absolute inset-x-0 bottom-5 mx-auto text-3xl text-white transition-opacity"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+          preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
+          <path fill="currentColor"
+            d="M2 10a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v10a4 4 0 0 1-2.328 3.635a2.996 2.996 0 0 0-.55-.756l-8-8A3 3 0 0 0 14 17v7H6a4 4 0 0 1-4-4V10Zm14 19a1 1 0 0 0 1.8.6l2.7-3.6H25a1 1 0 0 0 .707-1.707l-8-8A1 1 0 0 0 16 17v12Z" />
+        </svg>
+        <!-- <span class="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">39% OFF</span> -->
+      </a>
+      <div class="mt-4 px-5 pb-5">
+        <a href="#">
+          <h5 class="text-xl tracking-tight text-white">Relax awsome looking clothes</h5>
+        </a>
+        <div class="mt-2 mb-5 flex items-center justify-between">
+          <p>
+            <span class="text-3xl font-bold text-white">$449</span>
+            <span class="text-sm text-white line-through">$699</span>
+          </p>
+        </div>
+        <a href="#"
+          class="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-white text-black  px-5 py-2.5 text-center text-sm font-medium  focus:outline-none focus:ring-4 focus:ring-blue-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          Add to cart</a>
+      </div>
+    </div>
+    <div
+      class="group border-gray-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-black shadow-md wow zoomIn"
+      data-wow-delay="0.4s">
+      <a class="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
+        <img class="peer absolute top-0 right-0 h-full w-full object-cover" src="images/product-32-1.jpg"
+          alt="product image" />
+        <img
+          class="peer peer-hover:right-0 absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0"
+          src="images/product-32-2.jpg" alt="product image" />
+        <svg
+          class="group-hover:animate-ping group-hover:opacity-30 peer-hover:opacity-0 pointer-events-none absolute inset-x-0 bottom-5 mx-auto text-3xl text-white transition-opacity"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+          preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
+          <path fill="currentColor"
+            d="M2 10a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v10a4 4 0 0 1-2.328 3.635a2.996 2.996 0 0 0-.55-.756l-8-8A3 3 0 0 0 14 17v7H6a4 4 0 0 1-4-4V10Zm14 19a1 1 0 0 0 1.8.6l2.7-3.6H25a1 1 0 0 0 .707-1.707l-8-8A1 1 0 0 0 16 17v12Z" />
+        </svg>
+        <!-- <span class="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">39% OFF</span> -->
+      </a>
+      <div class="mt-4 px-5 pb-5">
+        <a href="#">
+          <h5 class="text-xl tracking-tight text-white">Over Sized Hoodies</h5>
+        </a>
+        <div class="mt-2 mb-5 flex items-center justify-between">
+          <p>
+            <span class="text-3xl font-bold text-white">$449</span>
+            <span class="text-sm text-white line-through">$699</span>
+          </p>
+        </div>
+        <a href="#"
+          class="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-white text-black  px-5 py-2.5 text-center text-sm font-medium  focus:outline-none focus:ring-4 focus:ring-blue-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          Add to cart</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- shop by category  -->
+  <div class="flex justify-center items-center mb-1">
+    <div class="2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
+      <div class="flex flex-col jusitfy-center items-center space-y-6">
+        <div class="flex flex-col justify-center items-center ">
+          <h1 class="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-black">Shop By Category</h1>
+          <p class="text-center ">"Explore Our Wide Range of Categories – Something for Everyone!"</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4  w-full">
+          <div class="relative group flex justify-center items-center h-full w-full lg:mt-2">
+            <img class="object-center object-cover h-full w-full mb-4 lg:mb-auto"
+              src="https://i.ibb.co/ThPFmzv/omid-armin-m-VSb6-PFk-VXw-unsplash-1-1.png" alt="girl-image" />
+            <button
+              class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-black py-3 w-36 bg-white">Women</button>
+            <div
+              class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50">
+            </div>
+          </div>
+
+          <div class="flex flex-col space-y-4 md:space-y-8  md:mt-0">
+            <div class="relative group flex justify-center items-center h-full w-full">
+              <img class="object-center object-cover h-full w-full"
+                src="https://i.ibb.co/SXZvYHs/irene-kredenets-DDqx-X0-7v-KE-unsplash-1.png" alt="shoe-image" />
+              <button
+                class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-black py-3 w-36 bg-white">Shoes</button>
+              <div
+                class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50">
+              </div>
+            </div>
+            <div class="relative group flex justify-center items-center h-full w-full">
+              <img class="object-center object-cover h-full w-full"
+                src="https://i.ibb.co/Hd1pVxW/louis-mornaud-Ju-6-TPKXd-Bs-unsplash-1-2.png" alt="watch-image" />
+              <button
+                class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-black py-3 w-36 bg-white">Watches</button>
+              <div
+                class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50">
+              </div>
+            </div>
+          </div>
+
+          <div class="relative group justify-center items-center h-full w-full hidden lg:flex">
+            <img class="object-center object-cover h-full w-full"
+              src="https://i.ibb.co/PTtRBLL/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-1.png" alt="girl-image" />
+            <button
+              class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-black py-3 w-36 bg-white">Accessories</button>
+            <div
+              class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50">
+            </div>
+          </div>
+          <div class="relative group flex justify-center items-center h-full w-full mt-4 md:hidden md:mt-8 lg:hidden">
+            <img class="object-center object-cover h-full w-full hidden md:block"
+              src="https://i.ibb.co/6FjW19n/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2.png" alt="girl-image" />
+            <img class="object-center object-cover h-full w-full md:hidden"
+              src="https://i.ibb.co/sQgHwHn/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-1.png"
+              alt="olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2" />
+            <button
+              class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-black py-3 w-36 bg-white">Accessories</button>
+            <div
+              class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50">
+            </div>
+          </div>
+        </div>
+        <div class="relative group hidden md:flex justify-center items-center h-full w-full mt-4 md:mt-8 lg:hidden">
+          <img class="object-center object-cover h-full w-full hidden md:block"
+            src="https://i.ibb.co/6FjW19n/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2.png" alt="girl-image" />
+          <img class="object-center object-cover h-full w-full sm:hidden"
+            src="https://i.ibb.co/sQgHwHn/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-1.png"
+            alt="olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2" />
+          <button
+            class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-black py-3 w-36 bg-white">Accessories</button>
+          <div
+            class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- popular category  -->
+  <div class="lg:container mx-auto px-5 mb-10">
+    <div class="flex flex-col justify-center items-center mb-4 ">
+      <h1 class="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-black">Popular Category</h1>
+      <p class="text-center ">"Explore Our Wide Range of Categories – Something for Everyone!"</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+      <div class="bg-gray-300 relative overflow-hidden group">
+        <div class="w-full h-full">
+          <!-- Image scales when the parent div is hovered -->
+          <img src="images/women.png" alt="" class="transition-transform duration-300 group-hover:scale-110">
+        </div>
+        <div class="overly w-full h-full absolute top-0 p-5 flex flex-col justify-between">
+          <div>
+            <h1 class="font-bold text-black">Women</h1>
+            <p class="font-normal text-black">3,495 products</p>
+          </div>
+          <a href="" class="p-2 text-center rounded text-white w-24 bg-black text-sm">Shop now</a>
+        </div>
+      </div>
+      <div class="bg-gray-300 relative overflow-hidden group">
+        <div class="w-full h-full">
+          <!-- Image scales when the parent div is hovered -->
+          <img src="images/men.png" alt="" class="transition-transform duration-300 group-hover:scale-110">
+        </div>
+        <div class="overly w-full h-full absolute top-0 p-5 flex flex-col justify-between">
+          <div>
+            <h1 class="font-bold text-black">Men</h1>
+            <p class="font-normal text-black">3,495 products</p>
+          </div>
+          <a href="" class="p-2 text-center rounded text-white w-24 bg-black text-sm">Shop now</a>
+        </div>
+      </div>
+      <div class="bg-gray-300 relative overflow-hidden group">
+        <div class="w-full h-full">
+          <!-- Image scales when the parent div is hovered -->
+          <img src="images/kids.png" alt="" class="transition-transform duration-300 group-hover:scale-110">
+        </div>
+        <div class="overly w-full h-full absolute top-0 p-5 flex flex-col justify-between">
+          <div>
+            <h1 class="font-bold text-black">Kids</h1>
+            <p class="font-normal text-black">3,495 products</p>
+          </div>
+          <a href="" class="p-2 text-center rounded text-white w-24 bg-black text-sm">Shop now</a>
+        </div>
+      </div>
+      <div class="bg-gray-300 relative overflow-hidden group">
+        <div class="w-full h-full">
+          <!-- Image scales when the parent div is hovered -->
+          <img src="images/accessories.png" alt="" class="transition-transform duration-300 group-hover:scale-110">
+        </div>
+        <div class="overly w-full h-full absolute top-0 p-5 flex flex-col justify-between">
+          <div>
+            <h1 class="font-bold text-black">Accessories</h1>
+            <p class="font-normal text-black">3,495 products</p>
+          </div>
+          <a href="" class="p-2 text-center rounded text-white w-24 bg-black text-sm">Shop now</a>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- get started category -->
+
+  <div class="px-7 mb-5">
+    <div class="flex flex-col justify-center items-center mb-4 ">
+      <h1 class="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-center text-black">Select a category to get started
+      </h1>
+      <p class="text-center ">"Explore Our Wide Range of Categories – Something for Everyone!"</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-black-400 cursor-pointer  ">
+      <div class="w-full">
+        <div
+          class="p-5 flex rounded-md flex-row justify-center items-center space-x-10 shadow-md hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+
+          <svg class="vd nd zc di ll il w-16" viewBox="0 0 60 60" fill="none" stroke="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M37.75 10C37.75 14.51 34.06 18.2 29.55 18.2C25.04 18.2 21.35 14.51 21.35 10H15.2L7 14.1V26.4H15.2V51H43.9V26.4H52.1V14.1L43.9 10H37.75Z"
+              stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <div class="py-4">
+            <h1 class="text-xl font-semibold">Clothes</h1>
+            <p>983 Available Products</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="">
+        <div
+          class="p-5 flex rounded-md flex-row justify-center items-center space-x-10 shadow-md hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+          <svg class="vd nd zc di ll il w-16" viewBox="0 0 60 60" fill="none" stroke="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M44 52H16C11.6 52 8 48.4 8 44V20H52V44C52 48.4 48.4 52 44 52Z" stroke-width="2"
+              stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M40 26V18C40 12.5 35.5 8 30 8C24.5 8 20 12.5 20 18V26" stroke-width="2" stroke-miterlimit="10"
+              stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M36 34H24V42H36V34Z" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          <div class="py-4">
+            <h1 class="text-xl font-semibold">Ladies Bag</h1>
+            <p>569 Available Products</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="">
+        <div
+          class="p-5 flex rounded-md flex-row justify-center items-center space-x-10 shadow-md hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+          <svg class="vd nd zc di ll il w-16" viewBox="0 0 60 60" fill="none" stroke="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18 32V48H12C12 48 12 40.7 12 36C12 30.1 8 27.9 8 22C8 15.2 12 12 12 12L35.1 33.3C36.9 35 39.4 36 41.9 36H46C49.3 36 52 38.7 52 42V48C52 48 50 48 42 48C34 48 23.5 32 18 32Z"
+              stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <div class="py-4">
+            <h1 class="text-xl font-semibold">Shoes</h1>
+            <p>783 Available Products</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="">
+        <div
+          class="p-5 flex rounded-md flex-row justify-center items-center space-x-10 shadow-md hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+
+          <svg class="vd nd zc di ll il w-16" viewBox="0 0 60 60" fill="none" stroke="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 18L24 11L26 8H34L36 11L30 18Z" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M30 52C39.3888 52 47 44.3888 47 35C47 25.6112 39.3888 18 30 18C20.6112 18 13 25.6112 13 35C13 44.3888 20.6112 52 30 52Z"
+              stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path
+              d="M30 47C36.6274 47 42 41.6274 42 35C42 28.3726 36.6274 23 30 23C23.3726 23 18 28.3726 18 35C18 41.6274 23.3726 47 30 47Z"
+              stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <div class="py-4">
+            <h1 class="text-xl font-semibold">Ornaments</h1>
+            <p>985 Available Products</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="">
+        <div
+          class="p-5 flex rounded-md flex-row justify-center items-center space-x-10 shadow-md hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+
+          <svg class="vd nd zc di ll il w-16" viewBox="0 0 60 60" fill="none" stroke="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 19.417L20 8H40L42 19.417" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path d="M18 40.583L20 52H40L42 40.583" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M30 46C38.8366 46 46 38.8366 46 30C46 21.1634 38.8366 14 30 14C21.1634 14 14 21.1634 14 30C14 38.8366 21.1634 46 30 46Z"
+              stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M30 22V30H38" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          <div class="py-4">
+            <h1 class="text-xl font-semibold">Watches</h1>
+            <p>780 Available Products</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="">
+        <div
+          class="p-5 flex rounded-md flex-row justify-center items-center space-x-10 shadow-md hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+          <svg class="vd nd zc di ll il w-16" viewBox="0 0 60 60" fill="none" stroke="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M30 44.625C31.5533 44.625 32.8125 43.3658 32.8125 41.8125C32.8125 40.2592 31.5533 39 30 39C28.4467 39 27.1875 40.2592 27.1875 41.8125C27.1875 43.3658 28.4467 44.625 30 44.625Z"
+              stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path
+              d="M41.25 50.25H18.75C17.7554 50.25 16.8016 49.8549 16.0983 49.1516C15.3951 48.4484 15 47.4946 15 46.5V12.75C15 11.7554 15.3951 10.8016 16.0983 10.0983C16.8016 9.39509 17.7554 9 18.75 9H41.25C42.2446 9 43.1984 9.39509 43.9016 10.0983C44.6049 10.8016 45 11.7554 45 12.75V46.5C45 47.4946 44.6049 48.4484 43.9016 49.1516C43.1984 49.8549 42.2446 50.25 41.25 50.25Z"
+              stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <div class="py-4">
+            <h1 class="text-xl font-semibold">Smart Phones</h1>
+            <p>983 Available Products</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- men women  -->
+  <div class=" flex flex-col lg:flex-row p-8 lg:p-8 lg:space-x-4 space-y-5 ">
+    <div class="bg-gray relative mt-5 wow fadeInLeft overflow-hidden group" data-wow-delay="0.1s">
+      <img src="images/su_banner_1.jpg" alt="" class="transition-transform duration-300 group-hover:scale-110">
+      <div class=" w-full h-full absolute top-0 px-12 pt-10 lg:pt-20 text-white ">
+        <h6 class="mb-2 tracking-[0.3em]">MEN'S STREETWEAR</h6>
+        <h1 class="text-5xl   font-bold leading-none mb-10">STREET <br>TREANDING <br> 2024</h1>
+        <button class="border border-white px-10 py-4 font-bold">SHOP NOW </button>
+      </div>
+    </div>
+    <div class="bg-gray relative wow fadeInRight group overflow-hidden" data-wow-delay="0.1s">
+      <img src="images/su_banner_2.jpg" alt="" class="transition-transform duration-300 group-hover:scale-110">
+      <div class=" w-full h-full absolute top-0 px-12 pt-10 lg:pt-20 text-white ">
+        <h6 class="mb-2 tracking-[0.3em]">WOMEN'S STREETWEAR</h6>
+        <h1 class="text-5xl  font-bold leading-none mb-10">THE <br>ULTIMATE <br> GUIDE</h1>
+        <button class="border border-white px-10 py-4 font-bold">SHOP NOW </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- testimonials  -->
+  <div class="flex flex-col space-x-3 justify-center text-center pt-6  ">
+    <h1 class="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-black">Customer Feedback </h1>
+    <p>"Your Feedback Our Growth and Inspires Excellence!"
+    </p>
+  </div>
+  <div class="autoplay overflow-hidden w-auto  px-8 pt-4">
+    <div >
+      <div class="rounded-md px-5 py-7 flex flex-col space-y-2 "
+        style="background-color: rgba(244, 244, 245, 1);   font-family: Jost, serif;">
+        <img src="images/avotor-image-2.webp" class="w-16 rounded-full">
+        <p class="text-1xl text-black">Smart Home Assitent </p>
+        <div class="flex space-x-1">
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+        </div>
+        <p class="text-[1.1rem] text-black  ">“Thanks guys, keep up the good work! Great job, I will
+          definitely be ordering again! Thanks guys, keep up the good work!
+          Garden was worth a fortune to my company.”</p>
+        <p class="font-bold text-black">Willie Bradley</p>
+        <span class="designation">/ Reporter</span>
+      </div>
+    </div>
+    <div>
+      <div class="rounded-md px-5 py-7 flex flex-col space-y-2 "
+        style="background-color: rgba(244, 244, 245, 1);   font-family: Jost, serif;">
+        <img src="images/avotor-image-2.webp" class="w-16 rounded-full">
+        <p class="text-1xl text-black">Smart Home Assitent </p>
+        <div class="flex space-x-1">
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+        </div>
+        <p class="text-[1.1rem] text-black  ">“Thanks guys, keep up the good work! Great job, I will
+          definitely be ordering again! Thanks guys, keep up the good work!
+          Garden was worth a fortune to my company.”</p>
+        <p class="font-bold text-black">Willie Bradley</p>
+        <span class="designation">/ Reporter</span>
+      </div>
+    </div>
+    <div>
+      <div class="rounded-md px-5 py-7 flex flex-col space-y-2 "
+        style="background-color: rgba(244, 244, 245, 1);   font-family: Jost, serif;">
+        <img src="images/avotor-image-2.webp" class="w-16 rounded-full">
+        <p class="text-1xl text-black">Smart Home Assitent </p>
+        <div class="flex space-x-1">
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+        </div>
+        <p class="text-[1.1rem] text-black  ">“Thanks guys, keep up the good work! Great job, I will
+          definitely be ordering again! Thanks guys, keep up the good work!
+          Garden was worth a fortune to my company.”</p>
+        <p class="font-bold text-black">Willie Bradley</p>
+        <span class="designation">/ Reporter</span>
+      </div>
+    </div>
+    <div>
+      <div class="rounded-md px-5 py-7 flex flex-col space-y-2 "
+        style="background-color: rgba(244, 244, 245, 1);   font-family: Jost, serif;">
+        <img src="images/avotor-image-2.webp" class="w-16 rounded-full">
+        <p class="text-1xl text-black">Smart Home Assitent </p>
+        <div class="flex space-x-1">
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+          <span class="star text-yellow-500 cursor-pointer text-2xl">&#9733;</span>
+        </div>
+        <p class="text-[1.1rem] text-black  ">“Thanks guys, keep up the good work! Great job, I will
+          definitely be ordering again! Thanks guys, keep up the good work!
+          Garden was worth a fortune to my company.”</p>
+        <p class="font-bold text-black">Willie Bradley</p>
+        <span class="designation">/ Reporter</span>
+      </div>
+    </div>
+
+   
+    
+  </div>
+
+
+
+  <!-- companies  -->
+<div class="grid grid-cols-4 gap-4 p-6 md:grid-cols-8 justify-center ">
+  <img src="images/ss_brands_1.webp" alt="">
+  <img src="images/ss_brands_2.webp" alt="">
+  <img src="images/ss_brands_3.webp" alt="">
+  <img src="images/ss_brands_4.webp" alt="">
+  <img src="images/ss_brands_5.webp" alt="">
+  <img src="images/ss_brands_6.webp" alt="">
+  <img src="images/ss_brands_7.webp" alt="">
+  <img src="images/ss_brands_8.png" alt="">
+</div>
+
+
+  <!-- services  -->
+
+  <div>
+    <div class="grid grid-cols-1 lg:grid-cols-4 px-8 lg:px-12 py-3 space-y-4 lg:space-x-5 mb-10">
+      <div class=" mt-4 w-[361px] lg:w-full  lg:ml-auto">
+        <div
+          class="py-3 flex rounded-md flex-row justify-center items-center space-x-4  hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+          <img src="images/delivery-car.png" alt="" class="w-14">
+          <div class="py-4">
+            <h1 class="text-xl font-semibold">Free Delivery <br>Everywhere </h1>
+            <p>Experince Global <br> delivery right now</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="">
+        <div
+          class="py-3 flex rounded-md flex-row justify-center items-center space-x-4  hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+          <img src="images/refund.png" alt="" class="w-14">
+          <div class="py-4">
+            <h1 class="text-xl font-semibold">30 Days return <br>policiy</h1>
+            <p>Experince Global <br> delivery right now</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="">
+        <div
+          class="py-3 pl-4 flex rounded-md flex-row justify-center items-center space-x-4  hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+          <img src="images/return.png" alt="" class="w-14">
+          <div class="py-4 px-2">
+            <h1 class="text-xl font-semibold">100% Payment secure </h1>
+            <p>Experince Global <br> delivery right now</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="">
+        <div
+          class="py-3 flex rounded-md flex-row justify-center items-center space-x-4  hover:shadow-lg hover:-translate-y-2 transition duration-300"
+          style="background-color: rgba(244, 244, 245, 1);">
+          <img src="images/headset.png" alt="" class="w-14">
+          <div class="py-4">
+            <h1 class="text-xl font-semibold">24/7 Friendly <br> support</h1>
+            <p>Connect us and we <br> will answer all query </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="w-full border-t border-gray-300 my-4">
+
+  <!-- footer  -->
+
+  <footer class="w-full pt-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="border-b border-gray-200 pb-14 flex justify-between items-center flex-col gap-8 lg:gap-0 lg:flex-row">
+        <div class="block">
+          <h3 class="font-manrope text-3xl text-gray-900 font-bold mb-2 text-center lg:text-left">Sign up to our webpage
+          </h3>
+          <p class="text-gray-500 text-center lg:text-left">Stay up to date with the latest update and announcement.</p>
+        </div>
+        <div class="flex items-center flex-col gap-4 lg:flex-row">
+          <input type="text" name="email"
+            class="py-3 px-6 h-14 border border-gray-300 shadow-sm rounded-full focus:outline-none"
+            placeholder="Enter your mail.." />
+          <button class="h-14 py-3.5 px-7 bg-black shadow-sm rounded-full text-white font-bold">Subscribe</button>
+        </div>
+      </div>
+      <!--Grid-->
+      <div
+        class="grid grid-cols-2 min-[690px]:grid-cols-4 lg:grid-cols-6 gap-4 xl:gap-8 pt-14 pb-10  mx-auto min-[690px]:max-w-2xl lg:max-w-full justify-between">
+        <div class=" w-full col-span-full mb-10 lg:col-span-2 lg:mb-0">
+          <a href="" class="flex justify-center lg:justify-start">
+            <img src="images/logo.png" alt="" class="w-28">
+
+          </a>
+          <p class="py-8 text-gray-500 lg:max-w-xs text-center lg:text-left">Trusted in more than 100 countries & 5
+            million customers. Have any query ?</p>
+          <a href="javascript:;"
+            class="py-2.5 px-5 h-9 block w-fit bg-black rounded-full shadow-sm text-xs text-white  transition-all   lg:mx-0">
+            Contact us
+          </a>
+        </div>
+        <!--End Col-->
+        <div class="lg:mx-auto text-center lg:text-left ">
+          <h4 class="text-lg text-gray-900 font-medium mb-7">H & M</h4>
+          <ul class="text-sm  transition-all duration-500">
+            <li class="mb-6"><a href="javascript:;" class="text-gray-600 whitespace-nowrap hover:text-gray-900">Home</a>
+            </li>
+            <li class="mb-6"><a href="javascript:;"
+                class=" text-gray-600 whitespace-nowrap hover:text-gray-900">About</a></li>
+            <li class="mb-6"><a href="javascript:;"
+                class=" text-gray-600 whitespace-nowrap hover:text-gray-900">Pricing</a></li>
+            <li class="mb-6"><a href="javascript:;"
+                class=" text-gray-600 whitespace-nowrap hover:text-gray-900">Features</a></li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 whitespace-nowrap hover:text-gray-900">Pro
+                Version</a></li>
+          </ul>
+        </div>
+        <!--End Col-->
+        <div class="lg:mx-auto text-left ">
+          <h4 class="text-lg text-gray-900 font-medium mb-7">Products</h4>
+          <ul class="text-sm  transition-all duration-500">
+            <li class="mb-6"><a href="javascript:;" class="text-gray-600 hover:text-gray-900">Figma UI System</a></li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 hover:text-gray-900">Icons Assets</a></li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 hover:text-gray-900">Responsive Blocks</a>
+            </li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 hover:text-gray-900">Components Library</a>
+            </li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 hover:text-gray-900">Plugin Guide</a></li>
+          </ul>
+        </div>
+        <!--End Col-->
+        <div class="lg:mx-auto text-center lg:text-left  ">
+          <h4 class="text-lg text-gray-900 font-medium mb-7">Resources</h4>
+          <ul class="text-sm  transition-all duration-500">
+            <li class="mb-6"><a href="javascript:;" class="text-gray-600 whitespace-nowrap hover:text-gray-900">FAQs</a>
+            </li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 whitespace-nowrap hover:text-gray-900">Quick
+                Start</a></li>
+            <li class="mb-6"><a href="javascript:;"
+                class=" text-gray-600 whitespace-nowrap hover:text-gray-900">Documentation</a></li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 whitespace-nowrap hover:text-gray-900">User
+                Guide</a></li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 whitespace-nowrap hover:text-gray-900">Plugin
+                Guide</a></li>
+          </ul>
+        </div>
+        <!--End Col-->
+        <div class="lg:mx-auto text-left ">
+          <h4 class="text-lg text-gray-900 font-medium mb-7">Support</h4>
+          <ul class="text-sm  transition-all duration-500">
+            <li class="mb-6"><a href="javascript:;" class="text-gray-600 whitespace-nowrap hover:text-gray-900">Customer
+                Support</a></li>
+            <li class="mb-6"><a href="javascript:;"
+                class=" text-gray-600 whitespace-nowrap hover:text-gray-900">Cookies</a></li>
+            <li class="mb-6"><a href="javascript:;"
+                class=" text-gray-600 whitespace-nowrap hover:text-gray-900">License</a></li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 whitespace-nowrap hover:text-gray-900">Terms &
+                Conditions</a></li>
+            <li class="mb-6"><a href="javascript:;" class=" text-gray-600 whitespace-nowrap hover:text-gray-900">Privacy
+                Policy</a></li>
+          </ul>
+        </div>
+        <!--End Col-->
+      </div>
+      <!--Grid-->
+      <div class="py-7 border-t border-gray-200">
+        <div class="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
+          <span class="text-sm text-gray-500 ">©<a href="">H&M </a>2024, All rights reserved.</span>
+          <div class="flex mt-4 space-x-4 sm:justify-center lg:mt-0 ">
+            <a href="javascript:;"
+              class="w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[#33CCFF] hover:bg-gray-900">
+              <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Social Media">
+                  <path id="Vector"
+                    d="M11.8214 9.81691L16.9919 3.93591H15.7667L11.2772 9.0423L7.6914 3.93591H3.55566L8.97803 11.6577L3.55566 17.8248H4.78097L9.522 12.4323L13.3088 17.8248H17.4446L11.8211 9.81691H11.8214ZM10.1432 11.7257L9.59382 10.9568L5.22246 4.83846H7.10445L10.6322 9.77615L11.1816 10.5451L15.7672 16.9633H13.8852L10.1432 11.726V11.7257Z"
+                    fill="white" />
+                </g>
+              </svg>
+
+            </a>
+            <a href="javascript:;" class="relative w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[linear-gradient(45deg,#FEE411_6.9%,#FEDB16_10.98%,#FEC125_17.77%,#FE983D_26.42%,#FE5F5E_36.5%,#FE2181_46.24%,#9000DC_85.57%)]  hover:bg-gradient-to-b from-gray-900 to-gray-900  
+                  ">
+              <svg class="w-[1.25rem] h-[1.125rem] text-white" viewBox="0 0 16 16" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5.63434 7.99747C5.63434 6.69062 6.6941 5.63093 8.00173 5.63093C9.30936 5.63093 10.3697 6.69062 10.3697 7.99747C10.3697 9.30431 9.30936 10.364 8.00173 10.364C6.6941 10.364 5.63434 9.30431 5.63434 7.99747ZM4.35427 7.99747C4.35427 10.0108 5.98723 11.6427 8.00173 11.6427C10.0162 11.6427 11.6492 10.0108 11.6492 7.99747C11.6492 5.98418 10.0162 4.3522 8.00173 4.3522C5.98723 4.3522 4.35427 5.98418 4.35427 7.99747ZM10.9412 4.20766C10.9411 4.37615 10.991 4.54087 11.0846 4.681C11.1783 4.82113 11.3113 4.93037 11.4671 4.99491C11.6228 5.05945 11.7942 5.07639 11.9595 5.04359C12.1249 5.01078 12.2768 4.92971 12.3961 4.81062C12.5153 4.69153 12.5966 4.53977 12.6295 4.37453C12.6625 4.2093 12.6457 4.03801 12.5812 3.88232C12.5168 3.72663 12.4076 3.59354 12.2674 3.49988C12.1273 3.40622 11.9625 3.35619 11.7939 3.35612H11.7936C11.5676 3.35623 11.3509 3.44597 11.1911 3.60563C11.0313 3.76529 10.9414 3.98182 10.9412 4.20766ZM5.132 13.7759C4.43946 13.7444 4.06304 13.6291 3.81289 13.5317C3.48125 13.4027 3.24463 13.249 2.99584 13.0007C2.74705 12.7524 2.59305 12.5161 2.46451 12.1847C2.367 11.9348 2.25164 11.5585 2.22016 10.8664C2.18572 10.1181 2.17885 9.89331 2.17885 7.99752C2.17885 6.10174 2.18629 5.87758 2.22016 5.12866C2.2517 4.43654 2.36791 4.06097 2.46451 3.81035C2.59362 3.47891 2.7474 3.24242 2.99584 2.99379C3.24428 2.74515 3.48068 2.59124 3.81289 2.46278C4.06292 2.36532 4.43946 2.25004 5.132 2.21857C5.88074 2.18416 6.10566 2.17729 8.00173 2.17729C9.89779 2.17729 10.1229 2.18472 10.8723 2.21857C11.5648 2.25009 11.9406 2.36623 12.1914 2.46278C12.5231 2.59124 12.7597 2.74549 13.0085 2.99379C13.2573 3.24208 13.4107 3.47891 13.5398 3.81035C13.6373 4.06023 13.7527 4.43654 13.7841 5.12866C13.8186 5.87758 13.8255 6.10174 13.8255 7.99752C13.8255 9.89331 13.8186 10.1175 13.7841 10.8664C13.7526 11.5585 13.6367 11.9347 13.5398 12.1847C13.4107 12.5161 13.2569 12.7526 13.0085 13.0007C12.76 13.2488 12.5231 13.4027 12.1914 13.5317C11.9414 13.6292 11.5648 13.7444 10.8723 13.7759C10.1236 13.8103 9.89865 13.8172 8.00173 13.8172C6.10481 13.8172 5.88051 13.8103 5.132 13.7759ZM5.07318 0.941429C4.31699 0.975845 3.80027 1.09568 3.34902 1.27116C2.88168 1.45239 2.48605 1.69552 2.09071 2.09C1.69537 2.48447 1.45272 2.88049 1.27139 3.34755C1.0958 3.79882 0.975892 4.31494 0.941455 5.07068C0.90645 5.82761 0.898438 6.0696 0.898438 7.99747C0.898438 9.92534 0.90645 10.1673 0.941455 10.9243C0.975892 11.68 1.0958 12.1961 1.27139 12.6474C1.45272 13.1142 1.69543 13.5106 2.09071 13.9049C2.48599 14.2992 2.88168 14.542 3.34902 14.7238C3.80113 14.8993 4.31699 15.0191 5.07318 15.0535C5.83096 15.0879 6.0727 15.0965 8.00173 15.0965C9.93075 15.0965 10.1729 15.0885 10.9303 15.0535C11.6865 15.0191 12.2029 14.8993 12.6544 14.7238C13.1215 14.542 13.5174 14.2994 13.9127 13.9049C14.3081 13.5105 14.5502 13.1142 14.7321 12.6474C14.9077 12.1961 15.0281 11.68 15.062 10.9243C15.0964 10.1668 15.1044 9.92534 15.1044 7.99747C15.1044 6.0696 15.0964 5.82761 15.062 5.07068C15.0276 4.31489 14.9077 3.79853 14.7321 3.34755C14.5502 2.88077 14.3075 2.4851 13.9127 2.09C13.518 1.69489 13.1215 1.45239 12.655 1.27116C12.2029 1.09568 11.6865 0.975277 10.9308 0.941429C10.1735 0.907013 9.93132 0.898438 8.00229 0.898438C6.07327 0.898438 5.83096 0.906445 5.07318 0.941429Z"
+                  fill="white"></path>
+              </svg>
+
+            </a>
+            <a href="javascript:;"
+              class="relative w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[#337FFF]  hover:bg-gray-900 ">
+              <svg class="w-[1rem] h-[1rem] text-white" viewBox="0 0 8 14" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.04111 7.81204L7.41156 5.46043H5.1296V3.93188C5.1296 3.28886 5.44818 2.66054 6.46692 2.66054H7.51899V0.657999C6.90631 0.560385 6.28723 0.507577 5.66675 0.5C3.78857 0.5 2.56239 1.62804 2.56239 3.66733V5.46043H0.480469V7.81204H2.56239V13.5H5.1296V7.81204H7.04111Z"
+                  fill="currentColor" />
+              </svg>
+
+            </a>
+            <a href="javascript:;"
+              class="relative w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[#FF0000]  hover:bg-gray-900 ">
+              <svg class="w-[1.25rem] h-[0.875rem] text-white" viewBox="0 0 16 12" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M13.9191 1.10651C14.558 1.27906 15.0602 1.78251 15.2299 2.42069C15.5388 3.57887 15.5388 5.99687 15.5388 5.99687C15.5388 5.99687 15.5388 8.41487 15.2299 9.57306C15.0578 10.2136 14.5556 10.7171 13.9191 10.8872C12.7638 11.1969 8.12875 11.1969 8.12875 11.1969C8.12875 11.1969 3.49603 11.1969 2.33844 10.8872C1.69952 10.7147 1.19735 10.2112 1.0276 9.57306C0.71875 8.41487 0.71875 5.99687 0.71875 5.99687C0.71875 5.99687 0.71875 3.57887 1.0276 2.42069C1.1997 1.78015 1.70188 1.27669 2.33844 1.10651C3.49603 0.796875 8.12875 0.796875 8.12875 0.796875C8.12875 0.796875 12.7638 0.796875 13.9191 1.10651ZM10.4981 5.99687L6.6481 8.22578V3.76796L10.4981 5.99687Z"
+                  fill="white" />
+              </svg>
+
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a href="https://wa.me/918440982031" class="whatsapp-button fixed bottom-5 right-1  z-50" target="_blank"
+    rel="noopener noreferrer">
+
+
+    <img src="images/whatsapp.png" alt="" class="w-12">
+  </a>
+
+  <!-- sidebar  -->
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Slick JS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="node_modules/tw-elements/js/tw-elements.umd.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      twElements.init();
+    });
+
+    // Get elements
+    const openModal = document.getElementById("openModal");
+    const closeModal = document.getElementById("closeModal");
+    const cancelModal = document.getElementById("cancelModal");
+    const userModal = document.getElementById("userModal");
+
+    // Open Modal
+    openModal.addEventListener("click", () => {
+      userModal.classList.remove("hidden");
+    });
+
+    // Close Modal
+    closeModal.addEventListener("click", () => {
+      userModal.classList.add("hidden");
+    });
+
+    // Cancel Operation Button
+    cancelModal.addEventListener("click", () => {
+      userModal.classList.add("hidden");
+    });
+    const cartIcon = document.getElementById("cartIcon");
+    const cartSection = document.getElementById("cartSection");
+    const closeCart = document.getElementById("closeCart");
+
+    // Open the Cart Modal
+    cartIcon.addEventListener("click", () => {
+      cartSection.classList.remove("hidden");
+    });
+
+    // Close the Cart Modal
+    closeCart.addEventListener("click", () => {
+      cartSection.classList.add("hidden");
+    });
+
+    $(document).ready(function () {
+    $('.autoplay').slick({
+      slidesToShow: 2,          // Desktop par 2 slides dikhengi
+      slidesToScroll: 1,        // 1 slide scroll karega
+      autoplay: true,           // Autoplay enable
+      autoplaySpeed: 3000,      // Speed set ki gayi
+      dots: true,               // Navigation dots visible
+      arrows: true,             // Arrows visible
+      responsive: [             // Breakpoints ke liye settings
+        {
+          breakpoint: 768,      // 768px se chhoti screen ke liye
+          settings: {
+            slidesToShow: 1,    // Ek slide dikhaye
+            slidesToScroll: 1   // Ek hi slide scroll kare
+          }
+        }
+      ]
+    });
+  });
+
+  </script>
+</body>
+
+</html>

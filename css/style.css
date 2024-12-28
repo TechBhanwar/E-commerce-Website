@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body{
+    /* background-color: black; */
+    font-family: "Jost", serif;
+}
+.slick-slide {
+  margin: 0 10px; /* Slides ke beech horizontal gap */
+}
+
+/* .slider img{
+    height: 300p;
+} */
+.custom-slider {
+    height: 490px;
+  }
+  .hidden {
+    display: none;
+  }
+ 
